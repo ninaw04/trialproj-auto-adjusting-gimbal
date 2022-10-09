@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <Servo.h>
-#define PI 3.1415926535897932384626433832795
+
 long accelX, accelY, accelZ;
 float gForceX, gForceY, gForceZ;
 float LSBSensitivity = 16384.0; // for +/- 2g
@@ -13,7 +13,7 @@ Servo myServo;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200);
+  Serial.begin(9600);
   Wire.begin();
   setupMPU(); // function specified later to setup registers
   myServo.attach(servoPin);
@@ -28,7 +28,6 @@ void loop() {
   storeAccelValues();
   printData();
   writeToServo(servoDegree);
-
   delay(100);
 }
 
